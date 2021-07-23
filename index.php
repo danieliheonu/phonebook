@@ -4,7 +4,7 @@
 
   if (isset($_REQUEST['search'])){
     $query = mysqli_query($conn, "SELECT * FROM contact WHERE name LIKE '%". $_REQUEST['search'] ."%' ORDER BY name ASC");
-    $result = mysqli_fetch_all($query);
+    $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
   }else {
     $query = mysqli_query($conn, "SELECT * FROM contact ORDER BY name ASC");
     $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
@@ -58,7 +58,6 @@
       </div>
     </div>
     <?php endforeach ?>
-    <h6 style="margin-left: 50px; margin-right: 50px; padding-top: 5px; padding-bottom: 5px; font-weight: 400;">Copyright &copy; Danieldutcum 2021</h6>
     </div>
    
 <?php include "utils/footer.php" ?>
