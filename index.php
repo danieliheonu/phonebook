@@ -7,7 +7,7 @@
     $result = mysqli_fetch_all($query);
   }else {
     $query = mysqli_query($conn, "SELECT * FROM contact ORDER BY name ASC");
-    $result = mysqli_fetch_all($query);
+    $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
   }
 
 
@@ -36,17 +36,24 @@
   </div>
   <div class="phonebook__body">
     <?php foreach($result as $key):?>
+      <?php
+        $a = "";
+        $icon = explode(" ",$key["name"]); 
+        foreach ($icon as $char) {
+          $a.=substr($char,0,1);
+        }
+      ?>
     <div class="phonebook__main">
       <div class="contact__letter">
-        <h4><?= substr($key[1], 0, 1) ?></h4>
+        <h4><?= $a ?></h4>
       </div>
       <div class="contact">
-        <h5><?= $key[1] ?></h5>
-        <p><?= $key[2] ?></p>
+        <h5><?= $key["name"] ?></h5>
+        <p><?= $key["mobile"] ?></p>
       </div>
       <div class="icons">
-        <a href="edit.php?id=<?= $key[0] ?>">
-          <button class="icon__edit"><i class="fa fa-edit"></i></button>
+        <a href="edit.php?id=<?= $key["id"] ?>">
+          <button class="icon__edit"><i class="fa fa-pencil" aria-hidden="true"></i></button>
         </a>
       </div>
     </div>
