@@ -51,6 +51,7 @@
       </div>
     </div>
     <?php endforeach ?>
-  </div>
+    <h6 style="margin-left: 50px; margin-right: 50px; padding-top: 5px; padding-bottom: 5px; font-weight: 400;">Copyright &copy; Danieldutcum 2021</h6>
+    </div>
    
 <?php include "utils/footer.php" ?>
